@@ -2,8 +2,11 @@ package fr.esir.omd.ci;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TaskManager {
+    private static final Logger logger = LoggerFactory.getLogger(TaskManager.class);
     private List<Task> tasks;
 
     public TaskManager() {
@@ -12,9 +15,11 @@ public class TaskManager {
 
     public void addTask(Task task) {
         tasks.add(task);
+        logger.info("Nouvelle tâche ajoutée : {}", task.getTitle());
     }
 
     public List<Task> getTasks() {
+        logger.debug("Récupération de la liste des {} tâches", tasks.size());
         return tasks;
     }
 }
